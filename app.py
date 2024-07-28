@@ -200,6 +200,8 @@ def task_result():
         else:
             # Task completed with an error
             return jsonify({"status": "ERROR", "error_message": str(result.result)})
+    elif result==result_id:
+        return jsonify({"status":"Error","error_message":"Invalid result_id"})
     else:
         # Task is still pending
         return jsonify({"status": "Running"})
