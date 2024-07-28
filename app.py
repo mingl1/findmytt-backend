@@ -222,3 +222,5 @@ def search():
 
 if __name__ == "__main__":
     flask_app.run(debug=True)
+else:
+    gunicorn_app = flask_app

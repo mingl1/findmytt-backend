@@ -10,9 +10,10 @@ load_dotenv()
 host = os.environ["UPSTASH_REDIS_HOST"]
 password = os.environ["UPSTASH_REDIS_PASSWORD"]
 port = os.environ["UPSTASH_REDIS_PORT"]
-backend = "rediss://:{}@{}:{}/0?ssl_cert_reqs=required".format(password, host, port)
-broker = "rediss://:{}@{}:{}?ssl_cert_reqs=required".format(password, host, port)
-
+# backend = "rediss://:{}@{}:{}/0?ssl_cert_reqs=required".format(password, host, port)
+# broker = "rediss://:{}@{}:{}?ssl_cert_reqs=required".format(password, host, port)
+backend = "redis://localhost:6379/0"
+broker = "redis://localhost:6379/"
 
 # Results will expire from database after 16 hours.
 # You can remove `result_expires` option so that your results will be persisted and can be fetched whenever.

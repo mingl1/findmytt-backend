@@ -1,7 +1,12 @@
 #!/bin/bash
 # cd ./flask-app
 # Start the first process
-celery -A tasks worker --pool=solo -l info --without-heartbeat --concurrency 1 &
+source ./venv/venv/bin/activate
+celery -A tasks worker -l info --concurrency 2 --detach
 
 # Start the second process
-python -m flask --app app.py run -h 0.0.0.0 -p 5000 
+# python -m flask --app app.py run -h 0.0.0.0 -p 5000 
+#
+gunicorn -b 0.0.0.0:5000 app:flask_app --daemon
+
+sudo systemctl start nginx
